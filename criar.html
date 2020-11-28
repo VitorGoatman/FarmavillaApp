@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Criar Requisição</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/w3.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="css/tabs.css" type="text/css" media="screen" />
+
+    </head>
+    <body class="w3-light-grey">
+    
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+        <script src="js/App.js"></script>
+
+        <div class="w3-white w3-container w3-mobile">
+            <p>
+                <form method="post" id="novoOrcamento" action="">
+                    <label for="campEmpresa"><strong>Empresa:</strong></label><br />
+                    <input required class="" type="text" id="campoEmpresa" autofocus /><br /><br>
+                    <label for="campoOrca"><strong>Orçamento:</strong></label><br />
+                    <input required class="" type="number" id="campoOrca"/><br /><br>
+                    <label for="campoNome"><strong>Nome:</strong></label><br />
+                    <input required class="" type="text" id="campoNome"/><br /><br>
+                    <label for="campoEnd"><strong>Endereço:</strong></label><br />
+                    <input required class="" type="text" id="campoEnd"/><br /><br>
+                    <label for="exp"><strong>CAP/SABOR:</strong></label><br />
+                    <input required type="radio" id="exp" name="exp" value="capsu" /> Cápsula
+                    <input required type="radio" id="exp" name="exp" value="sache" /> Sachê
+                    <input required type="radio" id="exp" name="exp" value="creme" /> Creme
+                    <input required type="radio" id="exp" name="exp" value="locao" /> Loção<br /><br>
+                    <label for="campoQuant"><strong>Quantidade:</strong></label><br />
+                    <input required class="" type="number" id="campoQuant" /><br><br>
+                    <label for="receita"><strong>Receita:</strong></label><br />
+                    <input required type="radio" id="receita"  name="receita" value="RM"  /> Mesa
+                    <input required type="radio" id="receita"  name="receita" value="SR"  /> SR
+                    <input required type="radio" id="receita" name="receita" value="ZAP" /> Zap
+                    <input required type="radio" id="receita" name="receita" value="TEL" /> Telefone<br /><br>
+                    <label for="campoObs"><strong>Observações:</strong></label><br />
+                    <textarea class="" type="textarea" id="campoObs" /></textarea><br /><br />
+                    <input class="w3-button w3-green" type="submit" value="Cadastrar" onclick="validate();">
+                    <input class="w3-button w3-red"   type="button" value="Cancelar"  onclick="limpar(); window.location.href='lista.html'">
+                </form>
+            </p>
+        </div>
+    </body>
+</html>
