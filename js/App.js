@@ -47,14 +47,14 @@ function getData(){
 
 function Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita, obs){
   db.collection(ORCAMENTOS).doc(document.getElementById('campoOrca').value).set({
-        Empresa: empresa,
-        Nome: nome,
-        Orçamento: orcamento,
-        Endereço: endereco,
-        CAPeSABOR: exp,
-        Quantidade: quantidade,
-        Receita: receita,
-        Observações: obs
+        empresa: empresa,
+        nome: nome,
+        cod: orcamento,
+        endereco: endereco,
+        cap: exp,
+        quantidade: quantidade,
+        receita: receita,
+        obs: obs
 });
   limpar();
  }
@@ -95,16 +95,3 @@ function redirecionar() {
 }
 
 
-db.collection("cities").get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-    });
-});
-
-
-  db.collection("Orçamentos").get().then((snapshot)=>{
-                        snapshot.forEach((doc)=>{
-                            console.log(doc.data());
-                        })
-  })

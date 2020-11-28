@@ -1,25 +1,20 @@
-const orcaList = document.querySelector('#conteudo');
+db.collection('Orçamentos').get().then((snapshot)=>{
+	getInfo(snapshot.docs);
+});
 
-function renderOrca(doc){
-	let li = document.createElement('li');
-	let cod = document.createElement('span');
-	let empresa = document.createElement('span');
-	let nome = document.createElement('span');
-
-	li.setAttribute('data-id', doc.id);
-	cod.textContext = doc.data().Orçamento;
-	empresa.textContext = doc.data().Empresa;
-	nome.textContext = doc.data().Nome;
-
-	li.appendChild(cod);
-	li.appendChild(empresa);
-	li.appendChild(nome);
-
-	orcaList.appendChild(li);
+var html = "";
+function getInfo(data){
+	data.forEach(doc => {
+		var info = doc.data();
+		console.log(doc.id);
+		html +="<section class='w3-hover-white'>"
+		html +="<strong class='w3-large'>"+ doc.id +"</strong>";
+		html +="<div class='w3-center w3-cell-row'>";
+		html +="<div class='w3-cell'>"+ info.empresa +"</div>";
+		html +="<div class='w3-cell'>"+ info.nome +"</div>";
+		html +="</div>";
+		html +="<div class='w3-center w3-text-green'><strong>Confirmado</strong></div>";
+		html +="</section>";
+	});
+	document.getElementById('conteudo').innerHTML = html;
 }
-
-db.collection('Orçamentos').get().then((snapshot) => {
-	snapshot.docs.forEach(doc => {
-		renderOrca(doc);
-	})
-})
