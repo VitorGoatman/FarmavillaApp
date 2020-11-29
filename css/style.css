@@ -1,0 +1,23 @@
+.flex{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    width: calc(100% - 1em);
+}
+
+.rect{
+    padding:16px;
+    margin:;
+    width: 2en;
+}
+
+.w3-cell :hover{
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.confbox {
+    border-bottom: 2px;
+}

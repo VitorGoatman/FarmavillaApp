@@ -32,29 +32,31 @@ function validate(){
 
 //obtendo dados
 function getData(){
-    empresa = document.getElementById('campoEmpresa').value;
-    nome = document.getElementById('campoNome').value;
-    orcamento = document.getElementById('campoOrca').value;
-    endereco = document.getElementById('campoEnd').value;
-    exp = document.getElementById('exp').value;
-    quantidade = document.getElementById('campoQuant').value;
-    receita = document.getElementById('receita').value;
-    obs = document.getElementById('campoObs').value;
-    
-    Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita, obs);    
+  empresa = document.getElementById('campoEmpresa').value;
+  nome = document.getElementById('campoNome').value;
+  orcamento = document.getElementById('campoOrca').value;
+  endereco = document.getElementById('campoEnd').value;
+  exp = document.getElementById('exp').value;
+  quantidade = document.getElementById('campoQuant').value;
+  receita = document.getElementById('receita').value;
+  obs = document.getElementById('campoObs').value;
+  dia = new Date().getDate() +"/"+ (new Date().getMonth()+1) +"/" + new Date().getFullYear();
+
+  Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita, obs, dia);
 }
 
 
-function Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita, obs){
+function Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita, obs, dia){
   db.collection(ORCAMENTOS).doc(document.getElementById('campoOrca').value).set({
-        empresa: empresa,
-        nome: nome,
-        cod: orcamento,
-        endereco: endereco,
-        cap: exp,
-        quantidade: quantidade,
-        receita: receita,
-        obs: obs
+    empresa: empresa,
+    nome: nome,
+    cod: orcamento,
+    endereco: endereco,
+    cap: exp,
+    quantidade: quantidade,
+    receita: receita,
+    obs: obs,
+    dia: dia
 });
   limpar();
  }
@@ -72,7 +74,7 @@ function limpar(){
   document.getElementById('campoQuant').value ="";
   document.getElementById('receita').value ="";
   document.getElementById('campoObs').value ="";
-    
+  redirecionar();
 }
 
 function alertaUsuario(){
@@ -88,7 +90,6 @@ function alertaUsuario3(){
 function alertaUsuario4(){
     swal("Muitas tentativas", "Aguarde alguns minutos e tente novamente", "error");
 }
-
 
 function redirecionar() {
     window.location.href = "lista.html";
