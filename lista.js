@@ -12,7 +12,7 @@ var ano2 = new Date().getFullYear();
 var hoje = dia1 +"/"+mes1+"/"+ano1;
 var ontem = dia2 +"/"+mes2+"/"+ano2;
 var offline = { source: 'cache'};
-dados.orderBy('dia').get(offline).then((snapshot)=>{
+dados.orderBy('timestamp').get(offline).then((snapshot)=>{
 	makeItem(snapshot.docs);
 });
 
