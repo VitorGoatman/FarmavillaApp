@@ -100,5 +100,5 @@ function alertaUsuario4(){
 }
 
 function redirecionar() {
-  window.location.href = "lista.html";
+  window.location.href = "index.html";
 }
