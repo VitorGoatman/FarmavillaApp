@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/tabs.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
     <style type="text/css">
-    	.centralizar { margin:1em auto; max-width:40em; padding:0 .62em; }
+    	.centralizar { margin:2em auto;margin-top: 4em; max-width:40em; padding:0 .62em; }
     </style>
 </head>
 <body class="w3-blue-gray">
@@ -21,12 +21,29 @@
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
     <script src="js/App.js"></script>
 	<script src="js/lista.js" type="text/javascript"></script>
-	<h1 class="w3-blue w3-center">Lista de Orçamentos</h1>
+    <div class="w3-bar w3-card w3-top w3-teal">
+	    <h2 class="w3-center w3-block">Lista de Orçamentos</h2>
+    </div>
     <main class="w3-container w3-light-gray w3-padding-16 centralizar">
 	    <div id="lista">
-	    </div>
-	    <div id="listaHJ">
+		    <section class="accordion">
+		        <header class='w3-bar w3-center w3-blue'><h3>Última Semana</h3></header>
+		        <div id='semana'></div>
+		    </section>
+
+		    <section class="">
+		        <header class='w3-bar w3-center w3-blue'><h3>Ontem</h3></header>
+		        <div id='ontem'></div>
+		    </section>
+
+		    <section>
+		        <header class='w3-bar w3-center w3-blue'><h3>Hoje</h3></header>
+		        <div id='hoje'></div>
+		    </section>
 	    </div>
     </main>
+    <div class="w3-bottom w3-bar w3-green">
+        <a class="w3-button w3-block w3-hover-green" href="index.html"><strong>Novo Orçamento</strong></a>
+    </div>
 </body>
 </html>
