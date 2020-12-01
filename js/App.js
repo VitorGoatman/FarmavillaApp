@@ -40,13 +40,23 @@ function getData(){
   quantidade = document.getElementById('campoQuant').value;
   receita = document.getElementById('receita').value;
   obs = document.getElementById('campoObs').value;
-  dia = new Date().getDate() +"/"+ (new Date().getMonth()+1) +"/" + new Date().getFullYear();
+  dia = new Date().getDate();
+  mes = new Date().getMonth()+1;
+  ano = new Date().getFullYear();
+  hora = new Date().getHours();
+  min = 0;
+  if (new Date().getMinutes() < 10) {
+    min = "0"+new Date().getMinutes();
+  } else {
+    min = new Date().getMinutes();
+  }
+  timestamp = new Date();
 
-  Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita, obs, dia);
+  Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita, obs, dia, mes, ano, hora, min, timestamp);
 }
 
 
-function Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita, obs, dia){
+function Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita, obs, dia, mes, ano, hora, min, timestamp){
   dados.doc(document.getElementById('campoOrca').value).set({
     empresa: empresa,
     nome: nome,
@@ -56,7 +66,12 @@ function Cadastrar(empresa, nome, orcamento, endereco , exp, quantidade, receita
     quantidade: quantidade,
     receita: receita,
     obs: obs,
-    dia: dia
+    dia: dia, 
+    mes: mes,
+    ano: ano,
+    hora: hora,
+    min : min,
+    timestamp: timestamp
 });
 
   limpar();
@@ -94,5 +109,5 @@ function alertaUsuario4(){
 }
 
 function redirecionar() {
-  window.location.href = "lista.html";
+  window.location.href = "index.html";
 }
