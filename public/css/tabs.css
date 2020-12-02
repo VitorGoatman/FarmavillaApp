@@ -84,16 +84,16 @@
 }
 
 .accordion label {
-  color: #333;
+  //color: #333;
   cursor: pointer;
   /*font-weight: normal;*/
   padding: 15px;
-  background: #e8e8e8;
+  //background: #e8e8e8;
 }
 
 .accordion label:hover,
 .accordion label:focus {
-  background: #d8d8d8;
+  //background: #d8d8d8;
 }
 
 .accordion .handle label:before {

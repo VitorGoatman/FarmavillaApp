@@ -27,19 +27,29 @@
     <main class="w3-container w3-light-gray w3-padding-16 centralizar">
 	    <div id="lista">
 		    <section class="accordion">
-		        <header class='w3-bar w3-center w3-blue'><h3>Última Semana</h3></header>
-		        <div id='semana'></div>
+                <input type="checkbox" name="collapse" id="handle1">
+		        <h3 class='w3-bar w3-center w3-blue'>
+                    <label for='handle1'>Última Semana</label>
+                </h3>
+		        <div class='content' id='semana'></div>
 		    </section>
 
-		    <section class="">
-		        <header class='w3-bar w3-center w3-blue'><h3>Ontem</h3></header>
-		        <div id='ontem'></div>
+		    <section class="accordion">
+                <input type="checkbox" name="collapse" id="handle2" checked="checked">
+		        <h3 class='w3-bar w3-center w3-blue'>
+                    <label for='handle2'>Ontem</label>
+                </h3>
+		        <div class='content' id='ontem'></div>
 		    </section>
 
-		    <section>
-		        <header class='w3-bar w3-center w3-blue'><h3>Hoje</h3></header>
-		        <div id='hoje'></div>
+		    <section class="accordion">
+                <input type="checkbox" name="collapse" id="handle3" checked="checked">
+		        <h3 class='w3-bar w3-center w3-blue'>
+                    <label for='handle3'>Hoje</label>
+                </h3>
+		        <div class='content' id='hoje'></div>
 		    </section>
+
 	    </div>
     </main>
     <div class="w3-bottom w3-bar w3-green">

@@ -90,7 +90,7 @@ function limpar(){
   document.getElementById('campoQuant').value ="";
   document.getElementById('receita').value ="";
   document.getElementById('campoObs').value ="";
-  alert("Cadastro feito com successo!");
+  document.getElementById('id01').style.display='none';
   setTimeout(redirecionar, 3000);
 }
 
