@@ -64,3 +64,28 @@ function makeItem(data){
 		document.getElementById('ontem').innerHTML = itemOntem;
 		document.getElementById('hoje').innerHTML = item;
 }
+
+function getInfo(id) {
+	document.getElementById('registro').innerHTML = "Atualizar Registro: "+id;
+	document.getElementById('info').style.display='block';
+	var orca = id;
+	var docRef = db.collection("Orçamentos").doc("'"+orca+"'");
+
+	docRef.get().then((snapshot)=>{
+			var docu = snapshot.data();
+		console.log(snapshot.id);
+			document.getElementById('obs').innerHTML = docu.nome;
+	}).catch(function(error) {
+		console.log("Error getting document:", error);
+	});
+}
+
+
+function mudarStatus(id) {
+	status = document.getElementById('setStatus').valur;
+	switch (status) {
+		case 0:
+			document.getElementById(id).style.backgroundColor= 'red';
+			break;
+	}
+}

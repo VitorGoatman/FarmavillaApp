@@ -18,8 +18,6 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
     https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
-    <script src="js/App.js"></script>
-	<script src="js/lista.js" type="text/javascript"></script>
     <div class="w3-bar w3-card w3-top w3-teal">
 	    <h2 class="w3-center w3-block">Lista de Orçamentos</h2>
     </div>
@@ -55,19 +53,22 @@
                 <h3 id='registro'>Atualizar Registro</h3>
             </header>
             <div class="w3-container w3-text-black">
-                <p id='dados''>
+                <p id='dados'>
                         <label for="setStatus"><strong>Status de Impressão</strong></label><br />
-                        <input required type="radio" id="setStatus" value="1"  /> Incluido <br />
-                        <input required type="radio" id="setStatus" value="2"  /> Requisição Impressa <br />
-                        <input required type="radio" id="setStatus" value="3" /> Rótulo Impresso <br />
-                        <input required type="radio" id="setStatus" value="0" /> <strong class='w3-text-red'>Cancelado</strong><br /><br>
+                        <input required type="radio" name="setStatus" id="" value="1"  /> Incluido <br />
+                        <input required type="radio" name="setStatus"id="" value="2"  /> Requisição Impressa <br />
+                        <input required type="radio" name="setStatus"id="" value="3" /> Rótulo Impresso <br />
+                        <input required type="radio" name="setStatus" id="" value="0" /> <strong class='w3-text-red'>Cancelado</strong><br /><br>
+                        <label><strong>Receita:</strong></label> <span id='receita'></span><br /><br />
+                        <label><strong>CAP:</strong></label> <span id='cap'></span><br /><br />
+                        <label><strong>Endereço</strong></label> <span id='endereco'></span><br /><br />
                         <label for="setObs"><strong>Observações</strong></label>
                         <p id='obs'></p>
                         <textarea id="setObs" rows="5" cols="40" tabindex=""></textarea>
                 </p>
             </div>
             <footer class="w3-center w3-bar">
-                <button class='w3-button w3-bar-item w3-green' onclick='mudarStatus()' style='width:50%'>Alterar</button>
+                <button class='w3-button w3-bar-item w3-green' id='mudaStatus' style='width:50%'>Alterar</button>
                 <button class='w3-button w3-bar-item w3-red' style='width:50%' onclick="document.getElementById('info').style.display='none'">Cancelar</button>
             </footer>
         </div>
@@ -75,5 +76,10 @@
     <div class="w3-bottom w3-bar w3-green">
         <a class="w3-button w3-block w3-hover-green" href="criar.html"><strong>Novo Orçamento</strong></a>
     </div>
+    
+        <script src="js/App.js"></script>
+
+        <script src="js/lista.js" type="text/javascript"></script>
+
 </body>
 </html>

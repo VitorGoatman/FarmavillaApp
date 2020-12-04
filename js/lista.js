@@ -1,6 +1,16 @@
+
+//Constante com o nome da tabela
+
+
+ 
+
+
+
 var item = "";
 var itemOntem = "";
 var itemWeek = "";
+var orca;
+
 
 var dia1 = new Date().getDate();
 var mes1 = new Date().getMonth()+1;
@@ -19,7 +29,7 @@ function makeItem(data){
 		var d = dia1-info.dia;
 		var m = mes1-info.mes;
 		if (hoje == date) {
-			item +="<div id='"+doc.id+"' onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
+			item +="<div style='background-color:"+ info.cor  + "' id='"+doc.id+"' onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
 			item +="<strong id='orçamento' class='w3-large'>"+ doc.id +"</strong>";
 			item +="<strong class='w3-large w3-right'>"+ info.hora+":"+info.min+"</strong>";
 			item +="<div class='flex'>";
@@ -30,7 +40,7 @@ function makeItem(data){
 			item +="</div>";
 		}
 		else if (d == 1 && m==0) {
-			itemOntem +="<div onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
+			itemOntem +="<div style='background-color:"+ info.cor  +"' id='"+doc.id+"' onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
 			itemOntem +="<strong id='orçamento' class='w3-large'>"+ doc.id +"</strong>";
 			itemOntem +="<div class='flex'>";
 			itemOntem +="<div class='rect'>"+ info.empresa +"</div>";
@@ -40,7 +50,7 @@ function makeItem(data){
 			itemOntem +="</div>";
 		}
 		else if (d < 0 && m == 1 ) {
-			itemOntem +="<div onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
+			itemOntem +="<div style='background-color:"+ info.cor  +"' id='"+doc.id+"'  onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
 			itemOntem +="<strong id='orçamento'  class='w3-large'>"+ doc.id +"</strong>";
 			itemOntem +="<div class='flex'>";
 			itemOntem +="<div class='rect'>"+ info.empresa +"</div>";
@@ -50,7 +60,7 @@ function makeItem(data){
 			itemOntem +="</div>";
 		}
 		else {
-			itemWeek +="<div onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
+			itemWeek +="<div style='background-color:"+ info.cor  +"' id='"+doc.id+"'  onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
 			itemWeek +="<strong id='orçamento' class='w3-large'>"+ doc.id +"</strong>";
 			itemWeek +="<strong class='w3-large w3-right'>"+ date +"</strong>";
 			itemWeek +="<div class='flex'>";
@@ -69,23 +79,64 @@ function makeItem(data){
 function getInfo(id) {
 	document.getElementById('registro').innerHTML = "Atualizar Registro: "+id;
 	document.getElementById('info').style.display='block';
-	var orca = id;
-	var docRef = db.collection("Orçamentos").doc("'"+orca+"'");
-
+	 orca = id;
+	 //Tava tendo um bug aqui por causa do "'orca'", então fiz a conversão pra string, agora funciona
+	var docRef = db.collection("Orçamentos").doc(String(orca));
 	docRef.get().then((snapshot)=>{
 			var docu = snapshot.data();
-		console.log(snapshot.id);
-			document.getElementById('obs').innerHTML = docu.nome;
+			document.getElementById('obs').innerHTML = docu.obs;
+			document.getElementById('receita').innerHTML = docu.receita;
+			document.getElementById('cap').innerHTML = docu.cap;
+			document.getElementById('endereco').innerHTML = docu.endereco;
 	}).catch(function(error) {
 		console.log("Error getting document:", error);
 	});
 }
 
-function mudarStatus(id) {
-	status = document.getElementById('setStatus').valur;
-	switch (status) {
-		case 0:
-			document.getElementById(id).style.backgroundColor= 'red';
-			break;
+
+//Pegando botão "mudaStatus"
+btnStatus = document.getElementById('mudaStatus');
+
+//Adicionando um Event listener, pra pegar o valor do radio
+btnStatus.addEventListener('click', () =>{
+	let selected = document.querySelector('input[type="radio"]:checked');
+
+//Se for melhor, trocar por Switch (eu não consegui usar kkkk)
+//Verifica qual o valor do radio
+	if(selected.value == null){
+		alert("selecione um")
+		return;
 	}
+	else if(selected.value == "0"){
+		//Se for igual a 0, muda a cor para vermelho
+		updateColor("#ffdddd");
+		document.getElementById(orca).style.backgroundColor= '#ffdddd';
+		return;
+	}
+	else if(selected.value == "1"){
+		//Se for igual a 1, muda a cor para amarelo
+		updateColor("#ffffcc");
+		document.getElementById(orca).style.backgroundColor = '#ffffcc';
+	}
+	else if(selected.value == "2"){
+		//Se for igual a 2, muda a cor para azul
+		updateColor("#ddffff");
+		document.getElementById(orca).style.backgroundColor = '#ddffff';
+	}
+	else{
+		//Se for igual a 3 ou + (embora 3 seja o máximo), muda a cor para verde
+		updateColor("#ddffdd");
+		document.getElementById(orca).style.backgroundColor = '#ddffdd';
+	}
+
+})
+
+//Função para mudar a cor no banco de dados
+function updateColor(color){
+  db.collection(ORCAMENTOS).doc(String(orca)).set({
+		cor:color,
+	}, {merge:true})
+  //O "merge" é utilizado pra que o "set" não sobrescreva os dados, apenas acidione/mude o "cor"
 }
+
+
