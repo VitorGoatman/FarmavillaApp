@@ -17,51 +17,58 @@
         <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
-        <script src="js/App.js"></script>
 
         <div class="w3-white w3-container w3-mobile">
             <p>
                 <form method="post" id="novoOrcamento" action="">
                     <label for="campEmpresa"><strong>Empresa:</strong></label><br />
-                    <input required class="" type="text" id="campoEmpresa" autofocus /><br /><br>
+                    <input required class="w3-input w3-border" type="text" id="campoEmpresa" autofocus /><br />
                     <label for="campoOrca"><strong>Orçamento:</strong></label><br />
-                    <input required class="" type="number" id="campoOrca"/><br /><br>
+                    <input required class="w3-input w3-border" type="number" id="campoOrca"/><br />
                     <label for="campoNome"><strong>Nome:</strong></label><br />
-                    <input required class="" type="text" id="campoNome"/><br /><br>
-                    <label for="campoEnd"><strong>Endereço:</strong></label><br />
-                    <input required class="" type="text" id="campoEnd"/><br /><br>
-                    <label for="exp"><strong>CAP/SABOR:</strong></label><br />
-                    <input required type="radio" id="exp" name="exp" value="capsu" /> Cápsula
-                    <input required type="radio" id="exp" name="exp" value="sache" /> Sachê
-                    <input required type="radio" id="exp" name="exp" value="creme" /> Creme
-                    <input required type="radio" id="exp" name="exp" value="locao" /> Loção<br /><br>
-                    <label for="campoQuant"><strong>Quantidade:</strong></label><br />
-                    <input required class="" type="number" id="campoQuant" /><br><br>
-                    <label for="receita"><strong>Receita:</strong></label><br />
-                    <input required type="radio" id="receita"  name="receita" value="RM"  /> Mesa
-                    <input required type="radio" id="receita"  name="receita" value="SR"  /> SR
-                    <input required type="radio" id="receita" name="receita" value="ZAP" /> Zap
-                    <input required type="radio" id="receita" name="receita" value="TEL" /> Telefone<br /><br>
-                    <label for="campoObs"><strong>Observações:</strong></label><br />
-                    <textarea class="" type="textarea" id="campoObs" /></textarea><br /><br />
-                    <input class="w3-button w3-green" type="submit" value="Cadastrar" onclick="validate();">
-                    <input class="w3-button w3-red"   type="button" value="Cancelar"  onclick="limpar(); window.location.href='index.html'">
-                </form>
-                <!-- Trigger/Open the Modal -->
-                <button onclick="document.getElementById('id01').style.display='block'"
-                        class="w3-button">Open Modal</button>
-
-                <!-- The Modal -->
-                <div id="id01" class="w3-modal">
-                    <div class="w3-modal-content">
-                        <div class="w3-container">
-                            <span onclick="document.getElementById('id01').style.display='none'"
-                                  class="w3-button w3-display-topright">&times;</span>
-                            <h3><strong>Cadastro feito com sucesso!</strong></h3>
+                    <input required class="w3-input w3-border" type="text" id="campoNome"/><br />
+                    <label for="entrega"><strong>Entrega?</strong></label>
+                    <div class="tabset">
+                        <!-- Tab 1 -->
+                        <input type="radio" name="tabset" id="tab1" value="false" aria-controls="nao" checked>
+                        <label class="w3-button w3-large w3-red" for="tab1">Não</label> 
+                        <!-- Tab 2 -->
+                        <input type="radio" name="tabset" id="tab2" value="true" aria-controls="sim">
+                       <label class="w3-button w3-large w3-green" for="tab2">Sim</label> 
+                        <div class="tab-panels">
+                            <section id="nãoend" class="tab-panel"><br></section>
+                            <section id="simend" class="tab-panel">
+                                <br>
+                                <label for="campoEnd"><strong>Endereço:</strong></label><br />
+                                <input class="w3-input w3-border" type="text" id="campoEnd"/><br /><br>            
+                            </section>
                         </div>
                     </div>
-                </div>
+                    <label for="urgent"><strong>Fazer hoje?</strong></label><br>
+                    <input type="radio" class="w3-radio" id="hoje" name="urgent" value="false" checked>
+                    <label for="">Não</label>
+                    <input type="radio" class="w3-radio" id="hoje" name="urgent" value="true">
+                    <label for="">Sim</label><br><br>
+                    <label for="exp"><strong>CAP/SABOR:</strong></label><br />
+                    <input required class="w3-radio" type="radio" id="cap" name="exp" value="Cápsula" checked="true" /> <label for="cap">Cápsula</label>
+                    <input required class="w3-radio" type="radio" id="sac" name="exp" value="Sachê" /> <label for="sac">Sachê</label>
+                    <input required class="w3-radio" type="radio" id="cre" name="exp" value="Creme" /> <label for="cre">Creme</label>
+                    <input required class="w3-radio" type="radio" id="loc" name="exp" value="Loção" /> <label for="loc">Loção</label><br /><br>
+                    <label for="campoQuant"><strong>Quantidade:</strong></label><br />
+                    <input required class="w3-input w3-border" type="number" id="campoQuant" /><br>
+                    <label for="receita"><strong>Receita:</strong></label><br />
+                    <input required class="w3-radio" type="radio" id="rTEL" name="receita" value="Telefone" checked="true"/> Telefone
+                    <input required class="w3-radio" type="radio" id="rSR" name="receita" value="SR"        /> SR
+                    <input required class="w3-radio" type="radio" id="rZAP" name="receita" value="ZAP"       /> Zap
+                    <input required class="w3-radio" type="radio" id="rRM" name="receita" value="RM"        /> Mesa<br /><br>
+                    <label for="campoObs"><strong>Observações:</strong></label><br />
+                    <textarea class="w3-input w3-border" type="textarea" id="campoObs" /></textarea><br />
+                    <input class="w3-button w3-green" type="button" value="Cadastrar" onclick="validate()">
+                    <input class="w3-button w3-red"   type="button" value="Cancelar"  onclick="limpar(); window.location.href='index.html'">
+                </form>
             </p>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="js/App.js"></script>
     </body>
 </html>

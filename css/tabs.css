@@ -3,7 +3,7 @@
 */
 .tabset > input[type="radio"] {
   position: absolute;
-  left: -200vw;
+  left: -100vw;
 }
 
 .tabset .tab-panel {
@@ -22,29 +22,23 @@
 .tabset > label {
              position: relative;
              display: inline-block;
-             padding:  0px 15px 15px;
+             padding:  0px 15px 0px;
              border: 1px solid transparent;
              border-bottom: 0;
              cursor: pointer;
              font-weight: 600;
          }
          .tabset > label::after {
-             content: "";
-             position: absolute;
-             left: 15px;
-             bottom: 20px;
-             width: 90%;
-             height: 4px;
-             background: white;
+             
          }
          .tabset > label:hover,
          .tabset > input:focus + label {
-             color: #9e3671;
+             /*color: #9e3671;*/
          }
          .tabset > label:hover::after,
          .tabset > input:focus + label::after,
          .tabset > input:checked + label::after {
-             background: #9e3671;
+             /*background: #9e3671;*/
          }
 
 .accordion > input[type="checkbox"] {
@@ -84,16 +78,16 @@
 }
 
 .accordion label {
-  //color: #333;
+  color: #333;
   cursor: pointer;
   /*font-weight: normal;*/
   padding: 15px;
-  //background: #e8e8e8;
+  //background: #87CEEB;
 }
 
 .accordion label:hover,
 .accordion label:focus {
-  //background: #d8d8d8;
+  //background: #00bcd4;
 }
 
 .accordion .handle label:before {
@@ -101,7 +95,7 @@
   content: "\f054";
   display: inline-block;
   margin-right: 10px;
- /* font-size: .58em;*/
+  font-size: .58em;
   line-height: 1.556em;
   vertical-align: middle;
 }
