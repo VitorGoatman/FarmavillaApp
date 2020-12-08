@@ -85,7 +85,7 @@ var salt = dice.roll();
 //var OrcaID = document.getElementById('campoOrca').value + new Date().getFullYear() + (new Date().getMonth+1) + new Date().getDate;
 
 function Cadastrar(empresa, nome, orcamento, exp, quantidade, receita, obs, dia, mes, ano, hora, min, timestamp){
-  dados.doc(ano1+mes1+dia1+document.getElementById('campoOrca').value).set({
+  dados.doc(salt+ano1+mes1+dia1+document.getElementById('campoOrca').value).set({
     empresa: empresa,
     nome: nome,
     cod: orcamento,
@@ -114,7 +114,7 @@ function verificar(){
           * Acredito que isso pode evitar algum missclick, caso clique em "sim" mas na verdade era não
           */
           var _endereco = document.getElementById('campoEnd').value;
-          db.collection(ORCAMENTOS).doc(ano1+mes1+dia1+document.getElementById('campoOrca').value).set({
+          db.collection(ORCAMENTOS).doc(salt+ano1+mes1+dia1+document.getElementById('campoOrca').value).set({
             entrega:_entrega[i].value, //Adiciona os valores "entrega e endereço"
             endereco:_endereco,
           }, {merge:true})
@@ -129,7 +129,7 @@ function verificar(){
       * caso queira que execute só quando for "true", adicione um if(_urgent[i].value == "true"){}
       *
       */
-      db.collection(ORCAMENTOS).doc(ano1+mes1+dia1+document.getElementById('campoOrca').value).set({
+      db.collection(ORCAMENTOS).doc(salt+ano1+mes1+dia1+document.getElementById('campoOrca').value).set({
         urgent:_urgent[i].value,
       }, {merge:true})
     }
@@ -181,5 +181,5 @@ function alertaUsuario4(){
 }
 
 function redirecionar() {
-  window.location.href = "index.html";
+  window.location.href = "lista.html";
 }

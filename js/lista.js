@@ -91,7 +91,7 @@ function makeItem(data){
 		}
 		else if (d == 1 && m==0 && info.ano == ano1) {
 			itemOntem +="<div style='background-color:"+ info.cor  +"' id='"+doc.id+"' onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
-			itemOntem +="<strong id='orçamento' class='w3-large'>"+ doc.id +"</strong>";
+			itemOntem +="<strong id='orçamento' class='w3-large'>"+ info.cod +"</strong>";
 			itemOntem +="<div class='flex'>";
 			itemOntem +="<div class='rect'>"+ info.empresa +"</div>";
 			itemOntem +="<div class='rect'>"+ info.nome +"</div>";
@@ -124,7 +124,7 @@ function makeItem(data){
 		}
 		else if (d < 0 && m == 1 && info.ano == ano1) {
 			itemOntem +="<div style='background-color:"+ info.cor  +"' id='"+doc.id+"'  onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
-			itemOntem +="<strong id='orçamento'  class='w3-large'>"+ doc.id +"</strong>";
+			itemOntem +="<strong id='orçamento'  class='w3-large'>"+ info.cod +"</strong>";
 			itemOntem +="<div class='flex'>";
 			itemOntem +="<div class='rect'>"+ info.empresa +"</div>";
 			itemOntem +="<div class='rect'>"+ info.nome +"</div>";
@@ -190,7 +190,7 @@ function makeItem(data){
 		}
 		else {
 			itemWeek +="<div style='background-color:"+ info.cor  +"' id='"+doc.id+"'  onclick=\"getInfo("+doc.id+")\" class='w3-padding-small w3-hover-white w3-border-blue-gray w3-border-top w3-border-bottom'>";
-			itemWeek +="<strong id='orçamento' class='w3-large'>"+ doc.id +"</strong>";
+			itemWeek +="<strong id='orçamento' class='w3-large'>"+ info.cod +"</strong>";
 			itemWeek +="<strong class='w3-large w3-right'>"+ date +"</strong>";
 			itemWeek +="<div class='flex'>";
 			itemWeek +="<div class='rect'>"+ info.empresa +"</div>";

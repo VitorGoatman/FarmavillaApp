@@ -27,7 +27,7 @@ function Login(){
     if(reportVal==true){
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(()=>{
             firebase.auth().signInWithEmailAndPassword(userEmail,userPassword).then(loggedUser=>{
-                window.location="index.html";
+                window.location="lista.html";
             }).catch(error=>{
                 console.log(error)
                 if(error.code == "auth/wrong-password"){
